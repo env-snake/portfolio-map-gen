@@ -6,7 +6,7 @@ import Icon from '@/components/ui/icon';
 
 const translations = {
   en: {
-    nav: { home: 'HOME', about: 'ABOUT', projects: 'PROJECTS', contact: 'CONTACT' },
+    nav: { home: 'HOME', about: 'ABOUT', process: 'PROCESS', projects: 'PROJECTS', pricing: 'PRICING', contact: 'CONTACT' },
     hero: {
       slogans: ['Creative', 'Innovative', 'Immersive'],
       title: 'Maps',
@@ -16,15 +16,67 @@ const translations = {
     },
     about: {
       title: 'About Me',
-      subtitle: 'Level Designer & Environmental Designer',
-      bio1: "I'm a level designer driven by a passion for creating atmospheric and immersive game environments. With extensive experience in Source Engine, I specialize in building detailed maps, optimizing performance, and crafting memorable player experiences.",
-      bio2: "My work isn't just about geometry — it's about storytelling through environment design, lighting, and spatial composition.",
+      bio1: "Hi! I'm a professional map maker with 8 years of experience creating maps for Source Engine. Started with simple aim maps for CS 1.6, and now develop complex competitive maps for CS:GO and CS2.",
+      bio2: "My specialization is creating balanced maps with thoughtful gameplay and atmospheric visuals. I work with Hammer Editor, Blender for modeling, Substance Painter for textures.",
       stats: [
-        { value: '10+', label: 'MAPS CREATED' },
-        { value: '50K+', label: 'WORKSHOP DOWNLOADS' },
-        { value: '5+', label: 'YEARS EXPERIENCE' }
+        { value: '50+', label: 'COMPLETED MAPS' },
+        { value: '8', label: 'YEARS EXPERIENCE' },
+        { value: '30K+', label: 'WORKSHOP DOWNLOADS' }
       ],
-      skills: ['Hammer Editor', 'Source Engine', 'Level Design', 'Lighting & Atmosphere', '3D Modeling']
+      skills: ['Hammer Editor', 'Blockout & Optimization', 'Level Design', 'Lighting & Atmosphere', '3D Modeling']
+    },
+    process: {
+      title: 'Work Process',
+      subtitle: 'How a map is created',
+      steps: [
+        { id: 1, title: 'Brief', desc: 'Discuss idea, concept and map requirements' },
+        { id: 2, title: 'Blockout', desc: 'Create basic geometry and test gameplay' },
+        { id: 3, title: 'Detailing', desc: 'Add textures, models and atmosphere' },
+        { id: 4, title: 'Optimization', desc: 'Configure lighting and performance' },
+        { id: 5, title: 'Testing', desc: 'Conduct playtests and fix bugs' },
+        { id: 6, title: 'Release', desc: 'Final version and Workshop publication' }
+      ]
+    },
+    pricing: {
+      title: 'Pricing',
+      subtitle: 'Choose your package',
+      packages: [
+        {
+          name: 'Basic',
+          price: '$200',
+          features: [
+            'Simple CS:GO/CS2 map',
+            'Basic optimization',
+            '1 revision round',
+            'Timeline: 7-10 days'
+          ],
+          popular: false
+        },
+        {
+          name: 'Standard',
+          price: '$450',
+          features: [
+            'Medium complexity map',
+            'Full optimization',
+            'Custom textures',
+            '3 revision rounds',
+            'Timeline: 14-21 days'
+          ],
+          popular: true
+        },
+        {
+          name: 'Premium',
+          price: '$900',
+          features: [
+            'Complex map of any type',
+            'Maximum detail',
+            'Unique models and textures',
+            'Unlimited revisions',
+            'Timeline: 30-45 days'
+          ],
+          popular: false
+        }
+      ]
     },
     projects: {
       title: 'Projects',
@@ -48,10 +100,10 @@ const translations = {
         { icon: 'Gamepad2', title: 'Steam', value: 'Snake', link: 'https://steamcommunity.com/id/MZmey/' }
       ]
     },
-    footer: '© 2025 Snake — Level Designer & Environmental Artist'
+    footer: '© 2025 Snake Development Club'
   },
   fr: {
-    nav: { home: 'ACCUEIL', about: 'À PROPOS', projects: 'PROJETS', contact: 'CONTACT' },
+    nav: { home: 'ACCUEIL', about: 'À PROPOS', process: 'PROCESSUS', projects: 'PROJETS', pricing: 'TARIFS', contact: 'CONTACT' },
     hero: {
       slogans: ['Créatif', 'Innovant', 'Immersif'],
       title: 'Cartes',
@@ -61,15 +113,67 @@ const translations = {
     },
     about: {
       title: 'À Propos',
-      subtitle: 'Level Designer & Concepteur Environnemental',
-      bio1: "Je suis un level designer animé par une passion pour la création d'environnements atmosphériques et immersifs. Avec une vaste expérience du Source Engine, je me spécialise dans la construction de cartes détaillées, l'optimisation des performances et la création d'expériences mémorables.",
-      bio2: "Mon travail ne se limite pas à la géométrie — il s'agit de raconter des histoires à travers le design d'environnement, l'éclairage et la composition spatiale.",
+      bio1: "Bonjour! Je suis un créateur de cartes professionnel avec 8 ans d'expérience dans la création de cartes pour Source Engine. J'ai commencé avec de simples cartes d'entraînement pour CS 1.6, et maintenant je développe des cartes compétitives complexes pour CS:GO et CS2.",
+      bio2: "Ma spécialisation est la création de cartes équilibrées avec un gameplay réfléchi et des visuels atmosphériques. Je travaille avec Hammer Editor, Blender pour la modélisation, Substance Painter pour les textures.",
       stats: [
-        { value: '10+', label: 'CARTES CRÉÉES' },
-        { value: '50K+', label: 'TÉLÉCHARGEMENTS WORKSHOP' },
-        { value: '5+', label: "ANNÉES D'EXPÉRIENCE" }
+        { value: '50+', label: 'CARTES COMPLÉTÉES' },
+        { value: '8', label: "ANNÉES D'EXPÉRIENCE" },
+        { value: '30K+', label: 'TÉLÉCHARGEMENTS WORKSHOP' }
       ],
-      skills: ['Hammer Editor', 'Source Engine', 'Level Design', 'Éclairage & Atmosphère', 'Modélisation 3D']
+      skills: ['Hammer Editor', 'Blockout & Optimisation', 'Level Design', 'Éclairage & Atmosphère', 'Modélisation 3D']
+    },
+    process: {
+      title: 'Processus de Travail',
+      subtitle: 'Comment une carte est créée',
+      steps: [
+        { id: 1, title: 'Brief', desc: 'Discuter de l\'idée, du concept et des exigences de la carte' },
+        { id: 2, title: 'Blockout', desc: 'Créer la géométrie de base et tester le gameplay' },
+        { id: 3, title: 'Détaillage', desc: 'Ajouter des textures, des modèles et de l\'atmosphère' },
+        { id: 4, title: 'Optimisation', desc: 'Configurer l\'éclairage et les performances' },
+        { id: 5, title: 'Tests', desc: 'Effectuer des playtests et corriger les bugs' },
+        { id: 6, title: 'Publication', desc: 'Version finale et publication sur Workshop' }
+      ]
+    },
+    pricing: {
+      title: 'Tarifs',
+      subtitle: 'Choisissez votre forfait',
+      packages: [
+        {
+          name: 'Basic',
+          price: '$200',
+          features: [
+            'Carte CS:GO/CS2 simple',
+            'Optimisation de base',
+            '1 tour de révision',
+            'Délai: 7-10 jours'
+          ],
+          popular: false
+        },
+        {
+          name: 'Standard',
+          price: '$450',
+          features: [
+            'Carte de complexité moyenne',
+            'Optimisation complète',
+            'Textures personnalisées',
+            '3 tours de révision',
+            'Délai: 14-21 jours'
+          ],
+          popular: true
+        },
+        {
+          name: 'Premium',
+          price: '$900',
+          features: [
+            'Carte complexe de tout type',
+            'Détail maximal',
+            'Modèles et textures uniques',
+            'Révisions illimitées',
+            'Délai: 30-45 jours'
+          ],
+          popular: false
+        }
+      ]
     },
     projects: {
       title: 'Projets',
@@ -93,7 +197,7 @@ const translations = {
         { icon: 'Gamepad2', title: 'Steam', value: 'Snake', link: 'https://steamcommunity.com/id/MZmey/' }
       ]
     },
-    footer: '© 2025 Snake — Level Designer & Artiste Environnemental'
+    footer: '© 2025 Snake Development Club'
   }
 };
 
@@ -131,7 +235,7 @@ export default function Index() {
     const gridSize = 40;
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = 'rgba(0, 255, 0, 0.1)';
+      ctx.strokeStyle = 'rgba(34, 197, 94, 0.08)';
       ctx.lineWidth = 1;
       
       for (let x = 0; x < canvas.width; x += gridSize) {
@@ -149,9 +253,9 @@ export default function Index() {
       }
       
       const gradient = ctx.createRadialGradient(mousePos.x, mousePos.y, 0, mousePos.x, mousePos.y, 200);
-      gradient.addColorStop(0, 'rgba(0, 255, 0, 0.3)');
-      gradient.addColorStop(0.5, 'rgba(0, 255, 0, 0.1)');
-      gradient.addColorStop(1, 'rgba(0, 255, 0, 0)');
+      gradient.addColorStop(0, 'rgba(34, 197, 94, 0.15)');
+      gradient.addColorStop(0.5, 'rgba(34, 197, 94, 0.05)');
+      gradient.addColorStop(1, 'rgba(34, 197, 94, 0)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
@@ -216,7 +320,7 @@ export default function Index() {
         <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-primary/20">
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="https://cdn.poehali.dev/files/1c9de207-5315-48fd-9ca3-1c324d4f2b1a.png" alt="Logo" className="w-12 h-12 rounded-full border-2 border-primary shadow-lg shadow-primary/50" />
+              <img src="https://cdn.poehali.dev/files/1c9de207-5315-48fd-9ca3-1c324d4f2b1a.png" alt="Logo" className="w-12 h-12 rounded-full border-2 border-primary shadow-lg shadow-primary/30" />
               <div>
                 <h1 className="text-2xl font-bold text-primary">Snake</h1>
                 <p className="text-xs text-muted-foreground">Level Designer</p>
@@ -260,7 +364,7 @@ export default function Index() {
             <div className="flex gap-4 justify-center">
               <Button
                 onClick={() => scrollToSection('projects')}
-                className="px-8 py-6 text-lg hover-scale bg-primary hover:bg-primary/80 shadow-lg shadow-primary/50"
+                className="px-8 py-6 text-lg hover-scale bg-primary hover:bg-primary/80 shadow-lg shadow-primary/30"
               >
                 {t.hero.cta1}
               </Button>
@@ -276,58 +380,75 @@ export default function Index() {
         </section>
 
         <section id="about" className="min-h-screen py-20 px-6">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-5xl font-bold text-center mb-4">
-              {t.about.title.split(' ')[0]} <span className="text-primary">{t.about.title.split(' ')[1] || ''}</span>
+              About <span className="text-primary">Me</span>
             </h2>
-            <div className="h-1 w-20 bg-primary mx-auto mb-16 shadow-lg shadow-primary/50"></div>
+            <div className="h-1 w-20 bg-primary mx-auto mb-16 shadow-lg shadow-primary/30"></div>
             
-            <div className="grid md:grid-cols-2 gap-12">
-              <Card className="p-8 hover-scale bg-card/50 backdrop-blur-sm border-primary/30">
-                <div className="flex items-center gap-4 mb-6">
-                  <img src="https://cdn.poehali.dev/files/1c9de207-5315-48fd-9ca3-1c324d4f2b1a.png" alt="Snake" className="w-20 h-20 rounded-full border-2 border-primary shadow-lg shadow-primary/50" />
-                  <div>
-                    <h3 className="text-2xl font-bold">Snake</h3>
-                    <p className="text-primary">{t.about.subtitle}</p>
+            <Card className="p-8 mb-8 hover-scale bg-card/50 backdrop-blur-sm border-primary/20">
+              <p className="text-muted-foreground mb-4">
+                {t.about.bio1}
+              </p>
+              <p className="text-muted-foreground">
+                {t.about.bio2}
+              </p>
+            </Card>
+
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {t.about.stats.map((stat: any, idx: number) => (
+                <Card key={idx} className="bg-card/50 backdrop-blur-sm border-primary/20 p-6 text-center hover-scale">
+                  <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground">{stat.label}</div>
+                </Card>
+              ))}
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {t.about.skills.map((skill: string, idx: number) => (
+                <Card
+                  key={idx}
+                  className="p-6 hover:border-primary transition-all hover-scale bg-card/50 backdrop-blur-sm border-primary/20 text-center"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30 shadow-lg shadow-primary/20 mx-auto mb-3">
+                    <Icon
+                      name={idx === 0 ? 'Hammer' : idx === 1 ? 'Boxes' : idx === 2 ? 'Map' : idx === 3 ? 'Lightbulb' : 'Box'}
+                      size={24}
+                      className="text-primary"
+                    />
                   </div>
-                </div>
-                
-                <p className="text-muted-foreground mb-4">
-                  {t.about.bio1}
-                </p>
-                <p className="text-muted-foreground mb-6">
-                  {t.about.bio2}
-                </p>
-                
-                <div className="grid grid-cols-3 gap-4">
-                  {t.about.stats.map((stat: any, idx: number) => (
-                    <div key={idx} className="bg-primary/10 rounded-lg p-4 text-center border border-primary/30">
-                      <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                      <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                  <h3 className="text-sm font-bold">{skill}</h3>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="process" className="min-h-screen py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl font-bold text-center mb-4">
+              Work <span className="text-primary">Process</span>
+            </h2>
+            <p className="text-center text-muted-foreground mb-12">{t.process.subtitle}</p>
+            <div className="h-1 w-20 bg-primary mx-auto mb-16 shadow-lg shadow-primary/30"></div>
+            
+            <div className="space-y-4">
+              {t.process.steps.map((step: any) => (
+                <Card
+                  key={step.id}
+                  className="p-6 hover:border-primary transition-all hover-scale bg-card/50 backdrop-blur-sm border-primary/20"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/50 shadow-lg shadow-primary/20 flex-shrink-0">
+                      <span className="text-2xl font-bold text-primary">{step.id}</span>
                     </div>
-                  ))}
-                </div>
-              </Card>
-              
-              <div className="space-y-4">
-                {t.about.skills.map((skill: string, idx: number) => (
-                  <Card
-                    key={idx}
-                    className="p-6 hover:border-primary transition-all hover-scale bg-card/50 backdrop-blur-sm border-primary/30"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/50 shadow-lg shadow-primary/30">
-                        <Icon
-                          name={idx === 0 ? 'Hammer' : idx === 1 ? 'Boxes' : idx === 2 ? 'Map' : idx === 3 ? 'Lightbulb' : 'Box'}
-                          size={24}
-                          className="text-primary"
-                        />
-                      </div>
-                      <h3 className="text-xl font-bold">{skill}</h3>
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">{step.title}</h3>
+                      <p className="text-sm text-muted-foreground">{step.desc}</p>
                     </div>
-                  </Card>
-                ))}
-              </div>
+                  </div>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -337,18 +458,18 @@ export default function Index() {
             <h2 className="text-5xl font-bold text-center mb-4">
               <span className="text-primary">{t.projects.title}</span>
             </h2>
-            <div className="h-1 w-20 bg-primary mx-auto mb-12 shadow-lg shadow-primary/50"></div>
+            <div className="h-1 w-20 bg-primary mx-auto mb-12 shadow-lg shadow-primary/30"></div>
             
             <div className="grid md:grid-cols-3 gap-6">
               {t.projects.items.map((project: any) => (
                 <Card
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className="hover:border-primary transition-all cursor-pointer group overflow-hidden hover-scale bg-card/50 backdrop-blur-sm border-primary/30"
+                  className="hover:border-primary transition-all cursor-pointer group overflow-hidden hover-scale bg-card/50 backdrop-blur-sm border-primary/20"
                 >
                   <div className="aspect-video bg-muted flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
-                    <Icon name="Play" size={64} className="text-primary group-hover:scale-110 transition-transform drop-shadow-[0_0_15px_rgba(0,255,0,0.5)]" />
+                    <Icon name="Play" size={64} className="text-primary group-hover:scale-110 transition-transform drop-shadow-[0_0_15px_rgba(34,197,94,0.3)]" />
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-primary mb-2">{project.title}</h3>
@@ -360,16 +481,64 @@ export default function Index() {
           </div>
         </section>
 
+        <section id="pricing" className="min-h-screen py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-5xl font-bold text-center mb-4">
+              <span className="text-primary">{t.pricing.title}</span>
+            </h2>
+            <p className="text-center text-muted-foreground mb-12">{t.pricing.subtitle}</p>
+            <div className="h-1 w-20 bg-primary mx-auto mb-16 shadow-lg shadow-primary/30"></div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {t.pricing.packages.map((pkg: any, idx: number) => (
+                <Card
+                  key={idx}
+                  className={`p-8 hover-scale bg-card/50 backdrop-blur-sm transition-all relative ${
+                    pkg.popular ? 'border-primary border-2 shadow-xl shadow-primary/20' : 'border-primary/20'
+                  }`}
+                >
+                  {pkg.popular && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                      Popular
+                    </div>
+                  )}
+                  
+                  <h3 className="text-2xl font-bold text-center mb-4">{pkg.name}</h3>
+                  <div className="text-5xl font-bold text-primary text-center mb-8">{pkg.price}</div>
+                  
+                  <div className="space-y-3 mb-8">
+                    {pkg.features.map((feature: string, i: number) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Button
+                    onClick={() => scrollToSection('contact')}
+                    className={`w-full ${
+                      pkg.popular ? 'bg-primary hover:bg-primary/80 shadow-lg shadow-primary/30' : 'bg-primary/20 hover:bg-primary/30 border border-primary/50'
+                    }`}
+                  >
+                    Order Now
+                  </Button>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="min-h-screen py-20 px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl font-bold text-center mb-4">
               Get In <span className="text-primary">Touch</span>
             </h2>
-            <div className="h-1 w-20 bg-primary mx-auto mb-12 shadow-lg shadow-primary/50"></div>
+            <div className="h-1 w-20 bg-primary mx-auto mb-12 shadow-lg shadow-primary/30"></div>
             
-            <Card className="p-8 mb-8 border-primary/50 bg-card/80 backdrop-blur-sm">
+            <Card className="p-8 mb-8 border-primary/30 bg-card/80 backdrop-blur-sm">
               <div className="flex items-center gap-3 justify-center mb-4">
-                <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-lg shadow-primary/80"></div>
+                <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-lg shadow-primary/50"></div>
                 <span className="font-bold text-primary">{t.contact.status}</span>
               </div>
               <p className="text-center text-muted-foreground">{t.contact.statusDesc}</p>
@@ -384,10 +553,10 @@ export default function Index() {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Card className="hover:border-primary transition-all p-6 cursor-pointer group hover-scale bg-card/50 backdrop-blur-sm border-primary/30">
+                  <Card className="hover:border-primary transition-all p-6 cursor-pointer group hover-scale bg-card/50 backdrop-blur-sm border-primary/20">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-primary/20 border border-primary/50 shadow-lg shadow-primary/30">
+                        <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-primary/20 border border-primary/30 shadow-lg shadow-primary/20">
                           <Icon name={method.icon} size={24} className="text-primary" />
                         </div>
                         <div>
@@ -410,10 +579,10 @@ export default function Index() {
       </div>
 
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl bg-card/95 backdrop-blur-md border-primary/50">
+        <DialogContent className="max-w-4xl bg-card/95 backdrop-blur-md border-primary/30">
           <button
             onClick={() => setSelectedProject(null)}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform z-50 shadow-lg shadow-primary/50"
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform z-50 shadow-lg shadow-primary/30"
           >
             <Icon name="X" size={24} />
           </button>
@@ -429,7 +598,7 @@ export default function Index() {
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                   <button
                     onClick={() => setImageIndex((imageIndex - 1 + projectImages.length) % projectImages.length)}
-                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/50"
+                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/30"
                   >
                     <Icon name="ChevronLeft" size={24} />
                   </button>
@@ -438,14 +607,14 @@ export default function Index() {
                       <div
                         key={idx}
                         className={`w-2 h-2 rounded-full transition-all ${
-                          idx === imageIndex ? 'bg-primary w-8 shadow-lg shadow-primary/50' : 'bg-white/30'
+                          idx === imageIndex ? 'bg-primary w-8 shadow-lg shadow-primary/30' : 'bg-white/30'
                         }`}
                       ></div>
                     ))}
                   </div>
                   <button
                     onClick={() => setImageIndex((imageIndex + 1) % projectImages.length)}
-                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/50"
+                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/30"
                   >
                     <Icon name="ChevronRight" size={24} />
                   </button>
