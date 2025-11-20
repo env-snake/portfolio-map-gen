@@ -1,205 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
-
-const translations = {
-  en: {
-    nav: { home: 'HOME', about: 'ABOUT', process: 'PROCESS', projects: 'PROJECTS', pricing: 'PRICING', contact: 'CONTACT' },
-    hero: {
-      slogans: ['Creative', 'Innovative', 'Immersive'],
-      title: 'Maps',
-      subtitle: "I'm Snake, a level designer crafting immersive environments for Source Engine games.",
-      cta1: 'View Projects',
-      cta2: 'Contact me'
-    },
-    about: {
-      title: 'About Me',
-      bio1: "Hi! I'm a professional map maker with 8 years of experience creating maps for Source Engine. Started with simple aim maps for CS 1.6, and now develop complex competitive maps for CS:GO and CS2.",
-      bio2: "My specialization is creating balanced maps with thoughtful gameplay and atmospheric visuals. I work with Hammer Editor, Blender for modeling, Substance Painter for textures.",
-      stats: [
-        { value: '50+', label: 'COMPLETED MAPS' },
-        { value: '8', label: 'YEARS EXPERIENCE' },
-        { value: '30K+', label: 'WORKSHOP DOWNLOADS' }
-      ],
-      skills: ['Hammer Editor', 'Blockout & Optimization', 'Level Design', 'Lighting & Atmosphere', '3D Modeling']
-    },
-    process: {
-      title: 'Work Process',
-      subtitle: 'How a map is created',
-      steps: [
-        { id: 1, title: 'Brief', desc: 'Discuss idea, concept and map requirements' },
-        { id: 2, title: 'Blockout', desc: 'Create basic geometry and test gameplay' },
-        { id: 3, title: 'Detailing', desc: 'Add textures, models and atmosphere' },
-        { id: 4, title: 'Optimization', desc: 'Configure lighting and performance' },
-        { id: 5, title: 'Testing', desc: 'Conduct playtests and fix bugs' },
-        { id: 6, title: 'Release', desc: 'Final version and Workshop publication' }
-      ]
-    },
-    pricing: {
-      title: 'Pricing',
-      subtitle: 'Choose your package',
-      packages: [
-        {
-          name: 'Basic',
-          price: '$200',
-          features: [
-            'Simple CS:GO/CS2 map',
-            'Basic optimization',
-            '1 revision round',
-            'Timeline: 7-10 days'
-          ],
-          popular: false
-        },
-        {
-          name: 'Standard',
-          price: '$450',
-          features: [
-            'Medium complexity map',
-            'Full optimization',
-            'Custom textures',
-            '3 revision rounds',
-            'Timeline: 14-21 days'
-          ],
-          popular: true
-        },
-        {
-          name: 'Premium',
-          price: '$900',
-          features: [
-            'Complex map of any type',
-            'Maximum detail',
-            'Unique models and textures',
-            'Unlimited revisions',
-            'Timeline: 30-45 days'
-          ],
-          popular: false
-        }
-      ]
-    },
-    projects: {
-      title: 'Projects',
-      items: [
-        { id: '1', title: 'Industrial Complex', desc: 'A detailed industrial map with atmospheric lighting and optimized gameplay flow.' },
-        { id: '2', title: 'Underground Facility', desc: 'Dark and immersive underground environment with dynamic lighting.' },
-        { id: '3', title: 'City Streets', desc: 'Urban environment with detailed architecture and realistic atmosphere.' },
-        { id: '4', title: 'Research Lab', desc: 'High-tech laboratory setting with attention to environmental storytelling.' },
-        { id: '5', title: 'Abandoned Warehouse', desc: 'Post-apocalyptic warehouse with dramatic lighting and composition.' },
-        { id: '6', title: 'Mountain Base', desc: 'Outdoor military installation with breathtaking vistas and tactical layout.' }
-      ]
-    },
-    contact: {
-      title: 'Get In Touch',
-      status: 'Open for Commissions',
-      statusDesc: "I'm available for commission work and collaborations. Feel free to reach out to discuss your project!",
-      methods: [
-        { icon: 'MessageCircle', title: 'Discord', value: 'mzmey', link: 'https://discord.com' },
-        { icon: 'Palette', title: 'ArtStation', value: 'artstation.com/zmey48', link: 'https://www.artstation.com/zmey48' },
-        { icon: 'Users', title: 'Discord Server', value: 'Join Community', link: 'https://discord.gg/RTxe6C88gB' },
-        { icon: 'Gamepad2', title: 'Steam', value: 'Snake', link: 'https://steamcommunity.com/id/MZmey/' }
-      ]
-    },
-    footer: '© 2025 Snake Development Club'
-  },
-  fr: {
-    nav: { home: 'ACCUEIL', about: 'À PROPOS', process: 'PROCESSUS', projects: 'PROJETS', pricing: 'TARIFS', contact: 'CONTACT' },
-    hero: {
-      slogans: ['Créatif', 'Innovant', 'Immersif'],
-      title: 'Cartes',
-      subtitle: "Je suis Snake, un level designer créant des environnements immersifs pour les jeux Source Engine.",
-      cta1: 'Voir les Projets',
-      cta2: 'Me Contacter'
-    },
-    about: {
-      title: 'À Propos',
-      bio1: "Bonjour! Je suis un créateur de cartes professionnel avec 8 ans d'expérience dans la création de cartes pour Source Engine. J'ai commencé avec de simples cartes d'entraînement pour CS 1.6, et maintenant je développe des cartes compétitives complexes pour CS:GO et CS2.",
-      bio2: "Ma spécialisation est la création de cartes équilibrées avec un gameplay réfléchi et des visuels atmosphériques. Je travaille avec Hammer Editor, Blender pour la modélisation, Substance Painter pour les textures.",
-      stats: [
-        { value: '50+', label: 'CARTES COMPLÉTÉES' },
-        { value: '8', label: "ANNÉES D'EXPÉRIENCE" },
-        { value: '30K+', label: 'TÉLÉCHARGEMENTS WORKSHOP' }
-      ],
-      skills: ['Hammer Editor', 'Blockout & Optimisation', 'Level Design', 'Éclairage & Atmosphère', 'Modélisation 3D']
-    },
-    process: {
-      title: 'Processus de Travail',
-      subtitle: 'Comment une carte est créée',
-      steps: [
-        { id: 1, title: 'Brief', desc: 'Discuter de l\'idée, du concept et des exigences de la carte' },
-        { id: 2, title: 'Blockout', desc: 'Créer la géométrie de base et tester le gameplay' },
-        { id: 3, title: 'Détaillage', desc: 'Ajouter des textures, des modèles et de l\'atmosphère' },
-        { id: 4, title: 'Optimisation', desc: 'Configurer l\'éclairage et les performances' },
-        { id: 5, title: 'Tests', desc: 'Effectuer des playtests et corriger les bugs' },
-        { id: 6, title: 'Publication', desc: 'Version finale et publication sur Workshop' }
-      ]
-    },
-    pricing: {
-      title: 'Tarifs',
-      subtitle: 'Choisissez votre forfait',
-      packages: [
-        {
-          name: 'Basic',
-          price: '$200',
-          features: [
-            'Carte CS:GO/CS2 simple',
-            'Optimisation de base',
-            '1 tour de révision',
-            'Délai: 7-10 jours'
-          ],
-          popular: false
-        },
-        {
-          name: 'Standard',
-          price: '$450',
-          features: [
-            'Carte de complexité moyenne',
-            'Optimisation complète',
-            'Textures personnalisées',
-            '3 tours de révision',
-            'Délai: 14-21 jours'
-          ],
-          popular: true
-        },
-        {
-          name: 'Premium',
-          price: '$900',
-          features: [
-            'Carte complexe de tout type',
-            'Détail maximal',
-            'Modèles et textures uniques',
-            'Révisions illimitées',
-            'Délai: 30-45 jours'
-          ],
-          popular: false
-        }
-      ]
-    },
-    projects: {
-      title: 'Projets',
-      items: [
-        { id: '1', title: 'Complexe Industriel', desc: 'Une carte industrielle détaillée avec éclairage atmosphérique et flux de jeu optimisé.' },
-        { id: '2', title: 'Installation Souterraine', desc: 'Environnement souterrain sombre et immersif avec éclairage dynamique.' },
-        { id: '3', title: 'Rues de la Ville', desc: 'Environnement urbain avec architecture détaillée et atmosphère réaliste.' },
-        { id: '4', title: 'Laboratoire de Recherche', desc: 'Laboratoire high-tech avec attention à la narration environnementale.' },
-        { id: '5', title: 'Entrepôt Abandonné', desc: 'Entrepôt post-apocalyptique avec éclairage dramatique et composition.' },
-        { id: '6', title: 'Base de Montagne', desc: 'Installation militaire extérieure avec vues époustouflantes et disposition tactique.' }
-      ]
-    },
-    contact: {
-      title: 'Me Contacter',
-      status: 'Ouvert aux Commissions',
-      statusDesc: "Je suis disponible pour des travaux de commission et des collaborations. N'hésitez pas à me contacter pour discuter de votre projet!",
-      methods: [
-        { icon: 'MessageCircle', title: 'Discord', value: 'mzmey', link: 'https://discord.com' },
-        { icon: 'Palette', title: 'ArtStation', value: 'artstation.com/zmey48', link: 'https://www.artstation.com/zmey48' },
-        { icon: 'Users', title: 'Serveur Discord', value: 'Rejoindre la Communauté', link: 'https://discord.gg/RTxe6C88gB' },
-        { icon: 'Gamepad2', title: 'Steam', value: 'Snake', link: 'https://steamcommunity.com/id/MZmey/' }
-      ]
-    },
-    footer: '© 2025 Snake Development Club'
-  }
-};
+import { translations } from '@/data/translations';
+import BackgroundCanvas from '@/components/BackgroundCanvas';
+import Navigation from '@/components/Navigation';
+import ProjectDialog from '@/components/ProjectDialog';
 
 export default function Index() {
   const [lang, setLang] = useState<'en' | 'fr'>('en');
@@ -210,7 +16,6 @@ export default function Index() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const t = translations[lang];
 
@@ -221,60 +26,6 @@ export default function Index() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const gridSize = 40;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = 'rgba(34, 197, 94, 0.08)';
-      ctx.lineWidth = 1;
-      
-      for (let x = 0; x < canvas.width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
-      }
-      
-      for (let y = 0; y < canvas.height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-      
-      const gradient = ctx.createRadialGradient(mousePos.x, mousePos.y, 0, mousePos.x, mousePos.y, 200);
-      gradient.addColorStop(0, 'rgba(34, 197, 94, 0.15)');
-      gradient.addColorStop(0.5, 'rgba(34, 197, 94, 0.05)');
-      gradient.addColorStop(1, 'rgba(34, 197, 94, 0)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
-    
-    draw();
-    const interval = setInterval(draw, 50);
-    
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      draw();
-    };
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [mousePos]);
 
   useEffect(() => {
     const currentWord = t.hero.slogans[currentSlogan];
@@ -315,40 +66,15 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
-      <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />
+      <BackgroundCanvas mousePos={mousePos} />
       <div className="relative z-10">
-        <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-primary/20">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img src="https://cdn.poehali.dev/files/1c9de207-5315-48fd-9ca3-1c324d4f2b1a.png" alt="Logo" className="w-12 h-12 rounded-full border-2 border-primary shadow-lg shadow-primary/30" />
-              <div>
-                <h1 className="text-2xl font-bold text-primary">Snake</h1>
-                <p className="text-xs text-muted-foreground">Level Designer</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-8">
-              {Object.entries(t.nav).map(([key, label]) => (
-                <button
-                  key={key}
-                  onClick={() => scrollToSection(key)}
-                  className={`text-sm font-medium transition-all hover:text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:transition-transform hover:after:scale-x-100 ${
-                    activeSection === key ? 'text-primary after:scale-x-100' : 'text-muted-foreground'
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-              
-              <button
-                onClick={() => setLang(lang === 'en' ? 'fr' : 'en')}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-primary/10 hover:bg-primary/20 transition-all border border-primary/30"
-              >
-                <span className="text-xl">{lang === 'en' ? '🇺🇸' : '🇫🇷'}</span>
-              </button>
-            </div>
-          </div>
-        </nav>
+        <Navigation 
+          t={t} 
+          activeSection={activeSection} 
+          scrollToSection={scrollToSection} 
+          lang={lang} 
+          setLang={setLang} 
+        />
 
         <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20">
           <div className="text-center max-w-4xl">
@@ -578,62 +304,13 @@ export default function Index() {
         </footer>
       </div>
 
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl bg-card/95 backdrop-blur-md border-primary/30">
-          <button
-            onClick={() => setSelectedProject(null)}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform z-50 shadow-lg shadow-primary/30"
-          >
-            <Icon name="X" size={24} />
-          </button>
-          
-          {selectedProject && (
-            <>
-              <div className="aspect-video bg-muted rounded-lg mb-4 relative overflow-hidden">
-                <img
-                  src={projectImages[imageIndex]}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <button
-                    onClick={() => setImageIndex((imageIndex - 1 + projectImages.length) % projectImages.length)}
-                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/30"
-                  >
-                    <Icon name="ChevronLeft" size={24} />
-                  </button>
-                  <div className="flex gap-2">
-                    {projectImages.map((_, idx) => (
-                      <div
-                        key={idx}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          idx === imageIndex ? 'bg-primary w-8 shadow-lg shadow-primary/30' : 'bg-white/30'
-                        }`}
-                      ></div>
-                    ))}
-                  </div>
-                  <button
-                    onClick={() => setImageIndex((imageIndex + 1) % projectImages.length)}
-                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-primary/30"
-                  >
-                    <Icon name="ChevronRight" size={24} />
-                  </button>
-                </div>
-              </div>
-              
-              <DialogHeader>
-                <DialogTitle className="text-3xl font-bold text-primary">
-                  {selectedProject.title}
-                </DialogTitle>
-              </DialogHeader>
-              
-              <p className="text-muted-foreground">
-                {selectedProject.desc} This project showcases advanced level design techniques, optimized lighting systems, and careful attention to environmental storytelling. Built with Source Engine's Hammer Editor, it demonstrates professional-grade map creation for competitive and roleplay servers.
-              </p>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
+      <ProjectDialog 
+        selectedProject={selectedProject}
+        setSelectedProject={setSelectedProject}
+        imageIndex={imageIndex}
+        setImageIndex={setImageIndex}
+        projectImages={projectImages}
+      />
     </div>
   );
 }
